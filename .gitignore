@@ -1,1 +1,23 @@
+# Terraform local state
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
+
+# Terraform directory (downloaded modules and providers)
+.terraform/
+
+# Terraform variable files with sensitive data
+*.tfvars
+*.tfvars.json
+
+# Terraform CLI config (with credentials)
+.terraformrc
+terraform.rc
+
+# OS-specific files
 .DS_Store
+
+# IDE files (optional)
+.vscode/
+.idea/
+*.swp
