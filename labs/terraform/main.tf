@@ -5,7 +5,7 @@ resource "azurerm_resource_group" "main" {
 
   tags = {
     name        = "terraform-course"
-    environment = "Lab"
+    environment = "learning-terraform"
     Managed_By  = "Terraform"
   }
 }
@@ -19,7 +19,7 @@ resource "azurerm_virtual_network" "main" {
 
   tags = {
     name        = "terraform-course"
-    environment = "Lab"
+    environment = "learning-terraform"
     Managed_By  = "Terraform"
   }
 }
