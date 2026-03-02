@@ -12,3 +12,8 @@ output "vnet_address_space" {
 description = "The address space of the virtual network"
 value       = azurerm_virtual_network.main.address_space
 }
+
+output "vnet_location" {
+description = "The location of the virtual network"
+value       = azurerm_virtual_network.main.location
+}
