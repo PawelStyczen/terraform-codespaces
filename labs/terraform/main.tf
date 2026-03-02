@@ -1,0 +1,27 @@
+# create a resource group
+resource "azurerm_resource_group" "main" {
+  name     = "terraform-course"
+  location = "East US"
+
+  tags = {
+    name        = "terraform-course"
+    environment = "Lab"
+    Managed_By  = "Terraform"
+  }
+}
+
+# create the virual network
+resource "azurerm_virtual_network" "main" {
+  name                = "terraform-network"
+  resource_group_name = azurerm_resource_group.main.name
+  location            = azurerm_resource_group.main.location
+  address_space       = ["192.168.0.0/16"]
+
+  tags = {
+    name        = "terraform-course"
+    environment = "Lab"
+    Managed_By  = "Terraform"
+  }
+}
+
+
