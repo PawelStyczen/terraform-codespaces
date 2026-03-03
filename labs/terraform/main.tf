@@ -65,46 +65,46 @@ resource "azurerm_network_security_group" "app" {
 # NSG rules for web subnet
 #NSG FOR WEB SUBNET
 resource "azurerm_network_security_rule" "web_http" {
-  name                = "Allow-HTTP"
+  name                        = "Allow-HTTP"
   network_security_group_name = azurerm_network_security_group.web.name
-  resource_group_name = azurerm_resource_group.main.name
-  priority            = 100
-  direction           = "Inbound"
-  access              = "Allow"
-  protocol            = "Tcp"
-  source_port_range   = "*"
-  destination_port_range = "80"
-  source_address_prefix      = "*"
-  destination_address_prefix = "*"
+  resource_group_name         = azurerm_resource_group.main.name
+  priority                    = 100
+  direction                   = "Inbound"
+  access                      = "Allow"
+  protocol                    = "Tcp"
+  source_port_range           = "*"
+  destination_port_range      = "80"
+  source_address_prefix       = "*"
+  destination_address_prefix  = "*"
 }
 
 resource "azurerm_network_security_rule" "web_https" {
-  name = "Allow-HTTPS"
+  name                        = "Allow-HTTPS"
   network_security_group_name = azurerm_network_security_group.web.name
-  resource_group_name = azurerm_resource_group.main.name
-  priority            = 110
-  direction           = "Inbound"
-  access              = "Allow"
-  protocol            = "Tcp"
-  source_port_range   = "*"
-  destination_port_range = "443"
-  source_address_prefix      = "*"
-  destination_address_prefix = "*"
+  resource_group_name         = azurerm_resource_group.main.name
+  priority                    = 110
+  direction                   = "Inbound"
+  access                      = "Allow"
+  protocol                    = "Tcp"
+  source_port_range           = "*"
+  destination_port_range      = "443"
+  source_address_prefix       = "*"
+  destination_address_prefix  = "*"
 }
 
 #NSG FOR APP SUBNET
 resource "azurerm_network_security_rule" "app_internal" {
-  name = "Allow-Internal"
+  name                        = "Allow-Internal"
   network_security_group_name = azurerm_network_security_group.app.name
-  resource_group_name = azurerm_resource_group.main.name
-  priority            = 100
-  direction           = "Inbound"
-  access              = "Allow"
-  protocol            = "Tcp"
-  source_port_range   = "*"
-  destination_port_range = "8080"
-  source_address_prefix      = var.web_subnet_cidr
-  destination_address_prefix = "*"
+  resource_group_name         = azurerm_resource_group.main.name
+  priority                    = 100
+  direction                   = "Inbound"
+  access                      = "Allow"
+  protocol                    = "Tcp"
+  source_port_range           = "*"
+  destination_port_range      = "8080"
+  source_address_prefix       = var.web_subnet_cidr
+  destination_address_prefix  = "*"
 }
 
 #NSG ASSOCIATIONS
