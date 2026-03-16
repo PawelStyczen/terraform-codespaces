@@ -17,7 +17,7 @@ output "location_info" {
 
 output "resource_group_id" {
   description = "azure resource group id"
-  value = data.azurerm_resource_group.development.id
+  value = azurerm_resource_group.development.id
 
 
 }

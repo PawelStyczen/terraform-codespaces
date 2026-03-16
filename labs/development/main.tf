@@ -2,28 +2,28 @@
 data "azurerm_subscription" "current" {}
 data "azurerm_client_config" "current" {}
 
-# get location information
+# Get location information
 data "azurerm_location" "current" {
   location = "eastus"
 }
 
-# create resource group data source information
+# Create Resource Group using data source information
 resource "azurerm_resource_group" "development" {
   name     = "development-resources"
   location = data.azurerm_location.current.display_name
 
   tags = {
-    environment    = "development"
-    SubscriptionId = data.azurerm_subscription.current.subscription_id
-    CreatedBy      = data.azurerm_client_config.current.object_id
+    Environment = "development"
+    Subscription = data.azurerm_subscription.current.display_name
+    CreatedBy    = data.azurerm_client_config.current.object_id
   }
 }
 
 # Create Virtual Network using data source information
 resource "azurerm_virtual_network" "development" {
   name                = "development-vnet"
-  resource_group_name = data.azurerm_resource_group.development.name
-  location            = data.azurerm_resource_group.development.location
+  resource_group_name = azurerm_resource_group.development.name
+  location            = azurerm_resource_group.development.location
   address_space       = [var.vnet_cidr]
 
 
