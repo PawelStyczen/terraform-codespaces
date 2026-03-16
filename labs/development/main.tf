@@ -8,7 +8,7 @@ data "azurerm_location" "current" {
 }
 
 # create resource group data source information
-data "azurerm_resource_group" "development" {
+resource "azurerm_resource_group" "development" {
   name     = "development-resources"
   location = data.azurerm_location.current.display_name
 
